@@ -37,6 +37,6 @@ for row in range(rows):
 
 for row in range(rows):
 	for col in range(cols):
-		for p in range(2):
+		for p in range(3):
 			print(ascii_matrix[row][col],end = "")
 	print()
