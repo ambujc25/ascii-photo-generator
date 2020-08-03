@@ -6,16 +6,19 @@ print(im.size)
 
 #im = im.resize((int(0.02*im.size[0]),int(0.02*im.size[1])))
 im = im.resize((40,40))
+#resize the image so it's visible in the terminal
 
 rows,cols = (im.size[0],im.size[1])
 print(rows,cols)
 arr = [[0]*cols for i in range(rows)]
+#Declare a 2d array with the same size as the resized image (Since every pixel will be one cell in this grid)
 
 arr = list(im.getdata())
+#Get the pixel data from the image
 arr = [arr[i*cols: (i+1)*cols] for i in range(rows)]
 
 brightness_matrix = [[0]*cols for i in range(rows)]
-
+#We convert the RGB tuples to a single brightness value and store in this matrix
 i = 0;
 #for col in range(cols):
 	#brightness_matrix[i][col] = int((arr[i*cols+col][0] + arr[i*cols + col][1] + arr[i*cols + col][2])/3);
@@ -29,6 +32,7 @@ for row in range(rows):
 
 ascii_chars = "`^,:;Il!i~+_-?][}{1)(|/tfjrxnuvczXYUJCLQ0OZmwqpdbkhao*#MW&8@$"
 divider = 255/(len(ascii_chars)-1)
+#Depending on the brightness we choose the character (less brightness = small characters, which show more of the dark terminal)
 
 ascii_matrix = [[0]*cols for i in range(rows)]
 for row in range(rows):
